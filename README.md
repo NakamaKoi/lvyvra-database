@@ -52,3 +52,11 @@ Books.all().then(({collectionName, data}) => {
   console.log(data) //Return All Object in this Collection
 })
 ```
+
+### save
+
+```js
+Books.save(jsonObject || array)
+```
+
+You can store with two data types, that is arrays and objects. You can store multiple data at once in an array 
