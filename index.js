@@ -42,9 +42,9 @@ class Collection {
 }
 
 module.exports = {
-  connect = (newUrl) => {
+  connect: (newUrl) => {
     url = newUrl
     console.log("setted")
   },
-  collection = Collection
+  collection: Collection
 }
