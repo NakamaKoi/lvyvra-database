@@ -11,11 +11,12 @@ class Collection {
 
   async findOne(funct) {
     return axios.get(this.url + this.collname).then(x => {
+      var axi = x.data
       var hasil = x.data
       hasil.data = []
-      console.log(x.data.data)
-      for (let i = 0; i < x.data.data.length; i++) {
-        var obj = x.data.data[i]
+      console.log(axi.data)
+      for (let i = 0; i < axi.data.length; i++) {
+        var obj = axi.data[i]
         if (funct(obj, i)) {
            console.log(obj)
            hasil.data.push(obj)
@@ -27,9 +28,10 @@ class Collection {
 
   async findById(id) {
     return axios.get(this.url + this.collname).then(x => {
+      var axi = x.data
       var hasil = x.data
       hasil.data = []
-      var pencarian = x.data.data.find(fd => fd._id === id)
+      var pencarian = axi.data.find(fd => fd._id === id)
       hasil.data.push(pencarian)
       return hasil
     })
@@ -37,10 +39,11 @@ class Collection {
 
   async find(funct) {
     return axios.get(this.url + this.collname).then(x => {
+      var axi = x.data
       var hasil = x.data
       hasil.data = []
-      for (let i = 0; i < x.data.data.length; i++) {
-        var obj = x.data.data[i]
+      for (let i = 0; i < axi.data.length; i++) {
+        var obj = axi.data[i]
         if (funct(obj, i)) {
            hasil.data.push(obj)
         }
