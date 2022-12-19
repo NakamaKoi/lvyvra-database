@@ -32,6 +32,7 @@ class Collection {
   }
 
   async save(data) {
+    if(!Array.isArray(data)) data = [data]
     return axios.post(this.url + this.collname, data)
   }
 }
