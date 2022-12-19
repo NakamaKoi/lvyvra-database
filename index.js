@@ -30,7 +30,7 @@ class Collection {
   }
 
   async all() {
-    axios.get(url + this.collname).then(x => return x)
+    return axios.get(url + this.collname).then(x => x)
   }
 
   async save(data) {
