@@ -14,7 +14,7 @@ class Collection {
       var hasil = x.data
       hasil.data = []
       for (let i = 0; i < x.data.data.length; i++) {
-        if ( true == callback(x.data.data[i], i, hasil)) {
+        if(funt(x.data.data[i], i)) {
            hasil.data[0] = x.data.data[i]
            return hasil
         }
@@ -39,7 +39,7 @@ class Collection {
       var hasil = x.data
       hasil.data = []
       for (let i = 0; i < x.data.data.length; i++) {
-        if ( true == callback(x.data.data[i], i, hasil)) {
+        if (funt(x.data.data[i], i)) {
            hasil.data.push(x.data.data[i])
         }
       }
