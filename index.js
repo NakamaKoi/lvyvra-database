@@ -1,13 +1,5 @@
 const axios = require("axios")
 
-class Lvyvra {
-  constructor(url) {
-    this.url = url
-  }
-}
-
-let conn = new Lvyvra()
-
 class Collection {
   constructor(collectionName, template = {}) {
     this.collname = collectionName
@@ -64,10 +56,15 @@ class Collection {
   }
 }
 
-module.exports = {
-  connect: (newUrl) => {
-    conn.url = newUrl
-    console.log("setted")
-  },
-  Collection: Collection
+class Lvyvra {
+  constructor() {
+    this.url = url
+    this.Collection = Collection
+  }
+  
+  connect(url) {
+    this.url = url
+  }
 }
+
+module.exports = Lvyvra
