@@ -62,8 +62,8 @@ class Lvyvra {
     this.Collection = Collection
   }
   
-  connect(url) {
-    this.url = url
+  connect(shin) {
+    this.url = shin
   }
 }
 
