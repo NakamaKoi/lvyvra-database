@@ -11,7 +11,7 @@ class Collection {
 
   async findOne(funct) {
     var axi = axios.get(this.url + this.collname).then(x => x.data)
-    var hasil = x.data
+    var hasil = axi
     hasil.data = []
     console.log(axi.data)
   }
@@ -29,7 +29,7 @@ class Collection {
 
   async find(funct) {
     var axi = axios.get(this.url + this.collname).then(x => x.data)
-    var hasil = x.data
+    var hasil = axi
     hasil.data = []
     console.log(axi.data)
   }
