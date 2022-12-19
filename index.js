@@ -32,20 +32,7 @@ class Collection {
   }
 
   async save(data) {
-    return axios.get(this.url + this.collname).then(x => {
-      var col = x.data
-      data.map(dt => {
-        if(dt?._id) {
-          col.data.find(np => np._id === dt._id).then(vl => vl = dt)
-        } else {
-          col.data.push(data)
-        }
-      })
-      if (!(col?.collection === this.collname)) throw "Pastikan Sudah Benar"
-      if (!col?.data) throw "Data Tidak Ada!"
-      axios.post(url + this.collname, col)
-    })
-
+    return axios.post(this.url + this.collname, data)
   }
 }
 
