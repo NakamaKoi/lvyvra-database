@@ -14,8 +14,9 @@ class Collection {
       var hasil = x.data
       hasil.data = []
       for (let i = 0; i < x.data.data.length; i++) {
-        if(funt(x.data.data[i], i)) {
-           hasil.data[0] = x.data.data[i]
+        var obj = x.data.data[i]
+        if (funct(obj, i)) {
+           hasil.data.push(obj)
            return hasil
         }
       }
@@ -36,11 +37,10 @@ class Collection {
     return axios.get(this.url + this.collname).then(x => {
       var hasil = x.data
       hasil.data = []
-      var hasil = x.data
-      hasil.data = []
       for (let i = 0; i < x.data.data.length; i++) {
-        if (funt(x.data.data[i], i)) {
-           hasil.data.push(x.data.data[i])
+        var obj = x.data.data[i]
+        if (funct(obj, i)) {
+           hasil.data.push(obj)
         }
       }
       return hasil
