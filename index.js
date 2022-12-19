@@ -15,14 +15,6 @@ class Collection {
       var hasil = x.data
       hasil.data = []
       console.log(axi.data)
-      for (let i = 0; i < axi.data.length; i++) {
-        var obj = axi.data[i]
-        if (funct(obj, i)) {
-           console.log(obj)
-           hasil.data.push(obj)
-           return hasil
-        }
-      }
     })
   }
 
@@ -42,13 +34,7 @@ class Collection {
       var axi = x.data
       var hasil = x.data
       hasil.data = []
-      for (let i = 0; i < axi.data.length; i++) {
-        var obj = axi.data[i]
-        if (funct(obj, i)) {
-           hasil.data.push(obj)
-        }
-      }
-      return hasil
+      console.log(axi.data)
     })
   }
 
