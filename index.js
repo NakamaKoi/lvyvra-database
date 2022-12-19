@@ -58,12 +58,12 @@ class Collection {
 
 class Lvyvra {
   constructor() {
-    this.url = url
+    this.url = null
     this.Collection = Collection
   }
   
-  connect(shin) {
-    this.url = shin
+  connect(url) {
+    this.url = url
   }
 }
 
