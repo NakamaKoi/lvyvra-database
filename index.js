@@ -39,6 +39,7 @@ class Collection {
       hasil.data = []
       for (let i = 0; i < x.data.data.length; i++) {
         var obj = x.data.data[i]
+        console.log(obj)
         if (funct(obj, i)) {
            hasil.data.push(obj)
         }
