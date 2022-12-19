@@ -31,3 +31,24 @@ Books.find(x => x.years === 2000).then(({collectionName, data}) => {
 })
 ```
 
+### findById
+
+```js
+const Books = new Collection("Books")
+Books.bind(urlDatabase) //Save Well
+
+Books.findById("Ixxxxxxxxxxx").then(({collectionName, data}) => {
+  console.log(data) //Return Object Have that id
+})
+```
+
+### all
+
+```js
+const Books = new Collection("Books")
+Books.bind(urlDatabase) //Save Well
+
+Books.all().then(({collectionName, data}) => {
+  console.log(data) //Return All Object in this Collection
+})
+```
