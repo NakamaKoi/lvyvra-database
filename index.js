@@ -10,7 +10,7 @@ class Collection {
   }
 
   async findOne(funct) {
-    axios.get(this.url + this.collname).then(x => {
+    return axios.get(this.url + this.collname).then(x => {
       var hasil = x.data
       hasil.data = []
       var pencarian = x.data.data.find(funct)
@@ -20,7 +20,7 @@ class Collection {
   }
 
   async findById(id) {
-    axios.get(this.url + this.collname).then(x => {
+    return axios.get(this.url + this.collname).then(x => {
       var hasil = x.data
       hasil.data = []
       var pencarian = x.data.data.find(fd => fd._id === id)
@@ -30,7 +30,7 @@ class Collection {
   }
 
   async find(funct) {
-    axios.get(this.url + this.collname).then(x => {
+    return axios.get(this.url + this.collname).then(x => {
       var hasil = x.data
       hasil.data = []
       var pencarian = x.data.data.filter(funct)
