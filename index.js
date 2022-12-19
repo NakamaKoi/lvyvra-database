@@ -7,7 +7,7 @@ class Collection {
   }
 
   async findOne(funct) {
-    axios.get(url + collname).then(x => {
+    axios.get(url + this.collname).then(x => {
       x.data.data = []
       x.data.data.push(x.data.data.find(funct))
       return x
@@ -15,7 +15,7 @@ class Collection {
   }
 
   async findById(id) {
-    axios.get(url + collname).then(x => {
+    axios.get(url + this.collname).then(x => {
       x.data.data = []
       x.data.data.push(x.data.data.find(fd => fd._id === id))
       return x
@@ -23,20 +23,24 @@ class Collection {
   }
 
   async find(funct) {
-    axios.get(url + collname).then(x => {
+    axios.get(url + this.collname).then(x => {
       x.data.data = x.data.data.filter(funct)
       return x
     })
   }
 
+  async all() {
+    axios.get(url + this.collname).then(x => return x)
+  }
+
   async save(data) {
-    axios.get(url + collname).then(x => {
+    axios.get(url + this.collname).then(x => {
       data.map(dt => {
         x.data.find(np => np._id === dt._id).then(vl => vl = dt)
       })
       if (!(x?.collection === this.collname)) throw "Pastikan Sudah Benar"
       if (!x?.data) throw "Data Tidak Ada!"
-      axios.post(url + collname, x)
+      axios.post(url + this.collname, x)
     })
 
   }
