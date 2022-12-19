@@ -13,7 +13,7 @@ class Collection {
     axios.get(this.url + this.collname).then(x => {
       var hasil = x.data
       hasil.data = []
-      var pencarian = x.data.data.find(vl => funct(vl))
+      var pencarian = x.data.data.find(funct))
       hasil.data.push(pencarian)
       return hasil
     })
@@ -33,7 +33,7 @@ class Collection {
     axios.get(this.url + this.collname).then(x => {
       var hasil = x.data
       hasil.data = []
-      var pencarian = x.data.data.filter(vl => funct(vl))
+      var pencarian = x.data.data.filter(funct)
       hasil.data = pencarian
       return hasil
     })
