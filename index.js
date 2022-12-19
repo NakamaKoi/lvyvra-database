@@ -64,8 +64,8 @@ class Lvyvra {
     this.Collection = Collection
   }
   
-  connect(url) {
-    conn = this
+  connect(url, client) {
+    conn = client
     this.url = url
   }
 }
