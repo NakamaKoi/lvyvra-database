@@ -13,9 +13,12 @@ class Collection {
     return axios.get(this.url + this.collname).then(x => {
       var hasil = x.data
       hasil.data = []
-      var pencarian = x.data.data.find(dh => funct(dh))
-      hasil.data.push(pencarian)
-      return hasil
+      for (let i = 0; i < x.data.data.length; i++) {
+        if ( true == callback(x.data.data[i], i, hasil)) {
+           hasil.data[0] = x.data.data[i]
+           return hasil
+        }
+      }
     })
   }
 
@@ -33,8 +36,13 @@ class Collection {
     return axios.get(this.url + this.collname).then(x => {
       var hasil = x.data
       hasil.data = []
-      var pencarian = x.data.data.filter(dh => funct(dh))
-      hasil.data = pencarian
+      var hasil = x.data
+      hasil.data = []
+      for (let i = 0; i < x.data.data.length; i++) {
+        if ( true == callback(x.data.data[i], i, hasil)) {
+           hasil.data.push(x.data.data[i])
+        }
+      }
       return hasil
     })
   }
