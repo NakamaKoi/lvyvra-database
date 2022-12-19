@@ -6,19 +6,24 @@ class Collection {
   }
 
   findOne(funct) {
-    return { data = [x.data.data.find(funct)] }
+    axios.get(url + collname).then(x => {
+      x.data.data = []
+      x.data.data.push(x.data.data.find(funct))
+      return x
+    })
   }
 
   findById(id) {
     axios.get(url + collname).then(x => {
-      x.data = [x.data.data.find(fd => fd._id === id)]
+      x.data.data = []
+      x.data.data.push(x.data.data.find(fd => fd._id === id))
       return x
     })
   }
 
   find(funct) {
     axios.get(url + collname).then(x => {
-      x.data = [x.data.data.filter(funct)]
+      x.data.data = x.data.data.filter(funct)
       return x
     })
   }
