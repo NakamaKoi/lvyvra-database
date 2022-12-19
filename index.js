@@ -5,7 +5,7 @@ class Collection {
     this.collname = collectionName
   }
 
-  findOne(funct) {
+  async findOne(funct) {
     axios.get(url + collname).then(x => {
       x.data.data = []
       x.data.data.push(x.data.data.find(funct))
@@ -13,7 +13,7 @@ class Collection {
     })
   }
 
-  findById(id) {
+  async findById(id) {
     axios.get(url + collname).then(x => {
       x.data.data = []
       x.data.data.push(x.data.data.find(fd => fd._id === id))
@@ -21,14 +21,14 @@ class Collection {
     })
   }
 
-  find(funct) {
+  async find(funct) {
     axios.get(url + collname).then(x => {
       x.data.data = x.data.data.filter(funct)
       return x
     })
   }
 
-  save(data) {
+  async save(data) {
     axios.get(url + collname).then(x => {
       data.map(dt => {
         x.data.find(np => np._id === dt._id).then(vl => vl = dt)
@@ -42,9 +42,9 @@ class Collection {
 }
 
 module.exports = {
-  connect: (newUrl) => {
+  connect = (newUrl) => {
     url = newUrl
     console.log("setted")
   },
-  collection: Collection
+  collection = Collection
 }
