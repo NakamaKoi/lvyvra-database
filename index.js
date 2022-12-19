@@ -10,28 +10,15 @@ class Collection {
   }
 
   async findOne(funct) {
-    var axi = axios.get(this.url + this.collname).then(x => x.data)
-    var hasil = axi
-    hasil.data = []
-    console.log(axi)
+    return axios.get(this.url + this.collname).then(x => {collection: x.data.collection, data: x.data.data.find(funct)})
   }
 
   async findById(id) {
-    return axios.get(this.url + this.collname).then(x => {
-      var axi = x.data
-      var hasil = x.data
-      hasil.data = []
-      var pencarian = axi.data.find(fd => fd._id === id)
-      hasil.data.push(pencarian)
-      return hasil
-    })
+    return axios.get(this.url + this.collname).then(x => {collection: x.data.collection, data: x.data.data.find(cv => cv._id === id)})
   }
 
   async find(funct) {
-    var axi = axios.get(this.url + this.collname).then(x => x.data)
-    var hasil = axi
-    hasil.data = []
-    console.log(axi)
+    return axios.get(this.url + this.collname).then(x => {collection: x.data.collection, data: x.data.data.filter(funct)})
   }
 
   async all() {
