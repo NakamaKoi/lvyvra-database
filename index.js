@@ -13,7 +13,7 @@ class Collection {
     var axi = axios.get(this.url + this.collname).then(x => x.data)
     var hasil = axi
     hasil.data = []
-    console.log(axi.data)
+    console.log(axi)
   }
 
   async findById(id) {
@@ -31,7 +31,7 @@ class Collection {
     var axi = axios.get(this.url + this.collname).then(x => x.data)
     var hasil = axi
     hasil.data = []
-    console.log(axi.data)
+    console.log(axi)
   }
 
   async all() {
