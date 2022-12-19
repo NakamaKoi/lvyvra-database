@@ -44,7 +44,7 @@ class Collection {
   }
 
   async save(data) {
-    axios.get(this.url + this.collname).then(x => {
+    return axios.get(this.url + this.collname).then(x => {
       var col = x.data
       data.map(dt => {
         if(dt?._id) {
