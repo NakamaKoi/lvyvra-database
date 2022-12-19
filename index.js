@@ -14,7 +14,7 @@ class Collection {
   }
 
   async findOne(funct) {
-    axios.get(url + this.collname).then(x => {
+    axios.get(conn.url + this.collname).then(x => {
       var hasil = x
       hasil.data = []
       var pencarian = x.data.data.find(vl => funct(vl))
@@ -24,7 +24,7 @@ class Collection {
   }
 
   async findById(id) {
-    axios.get(url + this.collname).then(x => {
+    axios.get(conn.url + this.collname).then(x => {
       var hasil = x
       hasil.data = []
       var pencarian = x.data.data.find(fd => fd._id === id)
@@ -34,7 +34,7 @@ class Collection {
   }
 
   async find(funct) {
-    axios.get(url + this.collname).then(x => {
+    axios.get(conn.url + this.collname).then(x => {
       var hasil = x
       hasil.data = []
       var pencarian = x.data.data.filter(vl => funct(vl))
@@ -44,11 +44,11 @@ class Collection {
   }
 
   async all() {
-    return axios.get(url + this.collname).then(x => x)
+    return axios.get(conn.url + this.collname).then(x => x)
   }
 
   async save(data) {
-    axios.get(url + this.collname).then(x => {
+    axios.get(conn.url + this.collname).then(x => {
       data.map(dt => {
         if(dt?._id) {
           x.data.find(np => np._id === dt._id).then(vl => vl = dt)
