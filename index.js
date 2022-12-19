@@ -1,5 +1,7 @@
 const axios = require("axios")
 
+let conn = null;
+
 class Collection {
   constructor(collectionName, template = {}) {
     this.collname = collectionName
@@ -63,6 +65,7 @@ class Lvyvra {
   }
   
   connect(url) {
+    conn = this
     this.url = url
   }
 }
