@@ -8,24 +8,31 @@ class Collection {
 
   async findOne(funct) {
     axios.get(url + this.collname).then(x => {
-      x.data.data = []
-      x.data.data.push(x.data.data.find(funct))
-      return x
+      var hasil = x
+      hasil.data = []
+      var pencarian = x.data.data.find(funct)
+      hasil.data.push(pencarian)
+      return hasil
     })
   }
 
   async findById(id) {
     axios.get(url + this.collname).then(x => {
-      x.data.data = []
-      x.data.data.push(x.data.data.find(fd => fd._id === id))
-      return x
+      var hasil = x
+      hasil.data = []
+      var pencarian = x.data.data.find(fd => fd._id === id)
+      hasil.data.push(pencarian)
+      return hasil
     })
   }
 
   async find(funct) {
     axios.get(url + this.collname).then(x => {
-      x.data.data = x.data.data.filter(funct)
-      return x
+      var hasil = x
+      hasil.data = []
+      var pencarian = x.data.data.filter(funct)
+      hasil.data = pencarian
+      return hasil
     })
   }
 
@@ -36,7 +43,11 @@ class Collection {
   async save(data) {
     axios.get(url + this.collname).then(x => {
       data.map(dt => {
-        x.data.find(np => np._id === dt._id).then(vl => vl = dt)
+        if(dt?._id) {
+          x.data.find(np => np._id === dt._id).then(vl => vl = dt)
+        } else {
+          x.data.push(data)
+        }
       })
       if (!(x?.collection === this.collname)) throw "Pastikan Sudah Benar"
       if (!x?.data) throw "Data Tidak Ada!"
