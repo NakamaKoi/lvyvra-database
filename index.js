@@ -1,7 +1,7 @@
 const axios = require("axios")
 
 class Collection {
-  constructor(collectionName, template = {}) {
+  constructor(collectionName) {
     this.collname = collectionName
   }
 
