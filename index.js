@@ -1,8 +1,9 @@
 const axios = require("axios")
 
 class Collection {
-  constructor(collectionName) {
+  constructor(collectionName, template) {
     this.collname = collectionName
+    this.template = template ? template : {}
   }
 
   bind(url) {
@@ -11,19 +12,19 @@ class Collection {
 
   async findOne(funct) {
     return axios.get(this.url + this.collname).then(x => {
-      return {collection: x.data.collection, data: x.data.data.find(funct)}
+      return { collection: x.data.collection, data: x.data.data.find(funct) }
     })
   }
 
   async findById(id) {
     return axios.get(this.url + this.collname).then(x => {
-      return {collection: x.data.collection, data: x.data.data.find(cv => cv._id === id)}
+      return { collection: x.data.collection, data: x.data.data.find(cv => cv._id === id) }
     })
   }
 
   async find(funct) {
     return axios.get(this.url + this.collname).then(x => {
-      return {collection: x.data.collection, data: x.data.data.filter(funct)}
+      return { collection: x.data.collection, data: x.data.data.filter(funct) }
     })
   }
 
@@ -32,7 +33,8 @@ class Collection {
   }
 
   async save(data) {
-    if(!Array.isArray(data)) data = [data]
+    if (!Array.isArray(data)) data = [data]
+    data = data.map(x => Object.assign(this.template, x))
     return axios.post(this.url + this.collname, data)
   }
 }
